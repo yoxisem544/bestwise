@@ -95,6 +95,7 @@ class Spider
             # puts isbn
           end
             @books << Course.new({
+                :book_name => @book_name,
                 :author => @author,
                 :proofreading => @proofreading,
                 :audited => @audited,
