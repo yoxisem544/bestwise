@@ -56,7 +56,9 @@ class Spider
           ic = Iconv.new("utf-8//translit//IGNORE","utf-8")
           detail_page = Nokogiri::HTML(ic.iconv(r.to_s))
 
+          puts detail_page.css('th').text
           # hello data init here
+          @book_name = detail_page.css('th').text
           @author = ""
           @proofreading = ""
           @audited = ""
@@ -68,7 +70,7 @@ class Spider
           @isbn = ""
 
           detail_page.css('div.title li').each_with_index do |row, index|
-            # puts row.text.rpartition('：').first#, row.text.rpartition('：').last
+            # puts row.text.rpartition('：').first, row.text.rpartition('：').last
 
             if row.text.rpartition('：').first == "作者"
               @author = row.text.rpartition('：').last
@@ -116,7 +118,7 @@ class Spider
   end
   
 
-  def save_to(filename='courses_p1.json')
+  def save_to(filename='bestwise_book.json')
     File.open(filename, 'w') {|f| f.write(JSON.pretty_generate(@books))}
   end
     

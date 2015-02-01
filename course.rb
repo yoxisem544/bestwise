@@ -2,9 +2,9 @@ require 'json'
 
 class Course
 
-	attr_accessor :author, :proofreading, :audited, :book_number, :price, :publish_store, :publish_date, :edition, :isbn
+	attr_accessor :book_name, :author, :proofreading, :audited, :book_number, :price, :publish_store, :publish_date, :edition, :isbn
 	def initialize(h)
-		@attributes = [:author, :proofreading, :audited, :book_number, :price, :publish_store, :publish_date, :edition, :isbn]
+		@attributes = [:book_name, :author, :proofreading, :audited, :book_number, :price, :publish_store, :publish_date, :edition, :isbn]
     h.each {|k, v| send("#{k}=",v)}
 	end
 
